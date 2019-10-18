@@ -1,0 +1,25 @@
+<div class="col-lg-4 mx-auto">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>
+                Insertar Cliente
+            </h3>
+        </div>
+        <div class="card-body">
+            <form (submit)="Save(cedula,nombreCompleto,celular)">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Cedula" #cedula required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nombre" #nombreCompleto required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Celular" #celular required>
+                </div>
+                <button class="btn btn-primary btn-block">
+                    Agregar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
