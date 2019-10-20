@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Cliente } from 'src/app/interfaces/Cliente';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cliente',
@@ -10,13 +11,26 @@ import { Cliente } from 'src/app/interfaces/Cliente';
 export class ClienteComponent implements OnInit {
   cliente: Cliente;
 
-  constructor() { }
+  constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
   }
-  Save(cedula:HTMLInputElement,nombre:HTMLInputElement,celular:HTMLInputElement){
-   console.log(cedula.value);
-   console.log(nombre.value);
-   console.log(celular.value);
+  onSubmit(nombre: HTMLInputElement , cedula: HTMLInputElement, celular: HTMLInputElement, newClientkForm: NgForm) {
+    this.cliente = {
+      cedula: parseInt(cedula.value, 10),
+      nombreCompleto: nombre.value,
+      celular: parseInt(celular.value, 10),
+    };
+    this.clienteService.crearCliente(this.cliente).subscribe(
+      res => {
+        console.log(res.status);
+        nombre.value = '';
+        cedula.value = '';
+        celular.value = '';
+      },
+      err => {
+        console.log(err.status);
+      }
+    );
   }
 }

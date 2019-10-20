@@ -6,20 +6,34 @@
             </h3>
         </div>
         <div class="card-body">
-            <form (submit)="Save(cedula,nombreCompleto,celular)">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Cedula" #cedula required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nombre" #nombreCompleto required>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Celular" #celular required>
-                </div>
-                <button class="btn btn-primary btn-block">
-                    Agregar
-                </button>
-            </form>
+         <form #newClientForm="ngForm" (ngSubmit)="onSubmit(nombre,cedula,celular,newClientForm)">
+              <label>Nombre Completo</label>
+               <div class="form-group">
+                     <input type="text" 
+                     placeholder="Nombre" 
+                     #nombre 
+                     class="form-control" 
+                     required autofocus>
+               </div>
+               <label>Cedula</label>
+               <div class="form-group">
+                 <input type="text" 
+                 placeholder="Cedula" #cedula 
+                 class="form-control" 
+                 required >
+               </div>
+               <label>Celular</label>
+               <div class="form-group">
+                 <input type="text" 
+                 placeholder="Celular" 
+                 #celular 
+                 class="form-control" 
+                 required >
+               </div>
+               <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Agregar</button>
+               </div>
+         </form>
         </div>
     </div>
 </div>
