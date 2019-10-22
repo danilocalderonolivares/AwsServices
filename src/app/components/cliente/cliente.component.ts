@@ -23,7 +23,7 @@ export class ClienteComponent implements OnInit {
     };
     this.clienteService.crearCliente(this.cliente).subscribe(
       res => {
-        console.log(res.status);
+        console.log(res);
         nombre.value = '';
         cedula.value = '';
         celular.value = '';
