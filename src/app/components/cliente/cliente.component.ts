@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Cliente } from 'src/app/interfaces/Cliente';
 import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cliente',
@@ -29,6 +30,13 @@ export class ClienteComponent implements OnInit {
         nombre.value = '';
         cedula.value = '';
         celular.value = '';
+        Swal.fire({
+           position: 'top',
+           type: 'success',
+            title: 'El cliente se ha guardado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+            });
         this.getALLUsers();
       },
       err => {
