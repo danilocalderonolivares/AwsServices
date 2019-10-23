@@ -10,10 +10,12 @@ import { NgForm } from '@angular/forms';
 })
 export class ClienteComponent implements OnInit {
   cliente: Cliente;
+  clientes: Cliente[] = [];
 
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit() {
+    this.getALLUsers();
   }
   onSubmit(nombre: HTMLInputElement , cedula: HTMLInputElement, celular: HTMLInputElement, newClientkForm: NgForm) {
     this.cliente = {
@@ -27,9 +29,23 @@ export class ClienteComponent implements OnInit {
         nombre.value = '';
         cedula.value = '';
         celular.value = '';
+        this.getALLUsers();
       },
       err => {
         console.log(err.status);
+      }
+    );
+  }
+
+  getALLUsers(){
+    this.clienteService.obtenerClientes().subscribe(
+      res => {
+        this.clientes = res;
+       console.log(res);
+       console.log(this.clientes);
+      },
+      err => {
+          console.log(err);
       }
     );
   }

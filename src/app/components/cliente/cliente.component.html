@@ -1,39 +1,71 @@
-<div class="col-lg-4 mx-auto">
-    <div class="card">
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-4 mx-auto">
+      <div class="card">
         <div class="card-header text-center">
-            <h3>
-                Insertar Cliente
-            </h3>
+          <h3>
+            Insertar Cliente
+          </h3>
         </div>
         <div class="card-body">
-         <form #newClientForm="ngForm" (ngSubmit)="onSubmit(nombre,cedula,celular,newClientForm)">
-              <label>Nombre Completo</label>
-               <div class="form-group">
-                     <input type="text" 
-                     placeholder="Nombre" 
-                     #nombre 
-                     class="form-control" 
-                     required autofocus>
-               </div>
-               <label>Cedula</label>
-               <div class="form-group">
-                 <input type="text" 
-                 placeholder="Cedula" #cedula 
-                 class="form-control" 
-                 required >
-               </div>
-               <label>Celular</label>
-               <div class="form-group">
-                 <input type="text" 
-                 placeholder="Celular" 
-                 #celular 
-                 class="form-control" 
-                 required >
-               </div>
-               <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">Agregar</button>
-               </div>
-         </form>
+          <form #newClientForm="ngForm" (ngSubmit)="onSubmit(nombre,cedula,celular,newClientForm)">
+            <label>Nombre Completo</label>
+            <div class="form-group">
+              <input type="text" placeholder="Nombre" #nombre class="form-control" required autofocus>
+            </div>
+            <label>Cedula</label>
+            <div class="form-group">
+              <input type="text" placeholder="Cedula" #cedula class="form-control" required>
+            </div>
+            <label>Celular</label>
+            <div class="form-group">
+              <input type="text" placeholder="Celular" #celular class="form-control" required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">Agregar</button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
+    <div class="col-sm-8 text-center">
+
+      <div class="card">
+
+        <div class="card-header" id="titleCard">
+          <h3 id="tableTitle">Lista de Clientes</h3>
+        </div>
+          <div class="card-body" id="tableContainer">
+            <table class="table table-striped table-bordered" id="productist" >
+               <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Cedula</th>
+                                    <th>Celular</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                             <tbody id="tableBody" *ngFor="let cliente of clientes">
+                              <td>
+                                {{cliente.nombreCompleto.s}}
+                              </td>
+                              <td>
+                                {{cliente.cedula.n}}
+                              </td>
+                              <td>
+                                {{cliente.celular.n}}
+                              </td>
+                              <td>
+                                 <button class="btn btn-outline-danger">Borrar</button>
+                                 <button class="btn btn-outline-primary">Ver</button>
+                                 <button class="btn btn-outline-secondary">Actualizar</button>
+                              </td>
+                            </tbody>
+            </table>
+
+         </div>
+      </div>
+    </div>
+
+  </div>
 </div>
