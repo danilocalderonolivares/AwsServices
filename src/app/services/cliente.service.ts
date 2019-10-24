@@ -17,4 +17,7 @@ export class ClienteService {
   obtenerClientes( ){
     return this.http.get<Cliente[]>(`${this.apiUriCliente}`);
   }
+  eliminar(cedula: number){
+    return this.http.delete(`${this.apiUriCliente}/${cedula}`);
+  }
 }

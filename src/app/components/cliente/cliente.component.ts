@@ -57,4 +57,14 @@ export class ClienteComponent implements OnInit {
       }
     );
   }
+  delete(pcliente : Cliente){
+    this.clienteService.eliminar(pcliente.cedula).subscribe(
+      res => {
+        console.log(res);
+      },
+      err =>{
+        console.log(err);
+      }
+    );
+  }
 }
